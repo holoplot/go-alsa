@@ -105,10 +105,17 @@ func record(rec *alsa.Device, duration time.Duration, channels, rate int) (alsa.
 		return alsa.Buffer{}, err
 	}
 
-	bufferSize, err := rec.NegotiateBufferSize(8192, 16384)
+	bufferSize, err := rec.NegotiateBufferSize(32768)
 	if err != nil {
 		return alsa.Buffer{}, err
 	}
+
+	_, err = rec.NegotiatePeriodSize(512)
+	if err != nil {
+		return alsa.Buffer{}, err
+	}
+
+	rec.SetSwParams(rec.MakeSwParams())
 
 	if err = rec.Prepare(); err != nil {
 		return alsa.Buffer{}, err

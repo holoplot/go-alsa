@@ -160,6 +160,25 @@ func (device *Device) Debug(v bool) {
 	device.debug = v
 }
 
+func (device *Device) MakeSwParams() alsatype.SwParams {
+	// final buf size
+	buf_size := int(device.hwparams.Intervals[paramBufferSize-paramFirstInterval].Max)
+
+	return alsatype.SwParams{
+		PeriodStep:     1,
+		AvailMin:       alsatype.Uframes(buf_size),
+		XferAlign:      1,
+		StartThreshold: alsatype.Uframes(buf_size),
+		StopThreshold:  alsatype.Uframes(buf_size * 2),
+		Proto:          device.pversion,
+		TstampType:     1,
+	}
+}
+
+func (device *Device) SetSwParams(p alsatype.SwParams) {
+	device.swparams = p
+}
+
 func (device *Device) Prepare() error {
 	if device.debug {
 		fmt.Println("Final hardware parameter changes:")
@@ -182,20 +201,6 @@ func (device *Device) Prepare() error {
 	}
 
 	device.hwparams_prev = device.hwparams
-
-	// final buf size
-	buf_size := int(device.hwparams.Intervals[paramBufferSize-paramFirstInterval].Max)
-
-	device.swparams = alsatype.SwParams{}
-	device.swparams_prev = alsatype.SwParams{}
-
-	device.swparams.PeriodStep = 1
-	device.swparams.AvailMin = alsatype.Uframes(buf_size)
-	device.swparams.XferAlign = 1
-	device.swparams.StartThreshold = alsatype.Uframes(buf_size)
-	device.swparams.StopThreshold = alsatype.Uframes(buf_size * 2)
-	device.swparams.Proto = device.pversion
-	device.swparams.TstampType = 1
 
 	if err := device.sw_params(); err != nil {
 		return err

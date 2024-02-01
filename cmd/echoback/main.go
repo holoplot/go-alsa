@@ -102,6 +102,9 @@ func echoback(rec, play *alsa.Device, delay time.Duration) error {
 		return err
 	}
 
+	rec.SetSwParams(rec.MakeSwParams())
+	play.SetSwParams(play.MakeSwParams())
+
 	if err = rec.Prepare(); err != nil {
 		return err
 	}

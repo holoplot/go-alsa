@@ -100,6 +100,8 @@ func beepDevice(device *alsa.Device) error {
 		return err
 	}
 
+	device.SetSwParams(device.MakeSwParams())
+
 	if err = device.Prepare(); err != nil {
 		return err
 	}
