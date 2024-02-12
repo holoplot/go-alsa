@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yobert/alsa"
+	"github.com/holoplot/go-alsa"
 )
 
 func main() {

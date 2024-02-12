@@ -10,8 +10,8 @@ import (
 
 	"github.com/go-audio/audio"
 	"github.com/go-audio/wav"
-	"github.com/yobert/alsa"
-	"github.com/yobert/alsa/alsatype"
+	"github.com/holoplot/go-alsa"
+	"github.com/holoplot/go-alsa/alsatype"
 )
 
 func main() {

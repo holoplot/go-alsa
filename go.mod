@@ -1,4 +1,4 @@
-module github.com/yobert/alsa
+module github.com/holoplot/go-alsa
 
 go 1.21.5
 

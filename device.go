@@ -6,9 +6,9 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/yobert/alsa/alsatype"
-	"github.com/yobert/alsa/color"
-	"github.com/yobert/alsa/pcm"
+	"github.com/holoplot/go-alsa/alsatype"
+	"github.com/holoplot/go-alsa/color"
+	"github.com/holoplot/go-alsa/pcm"
 )
 
 type DeviceType int

@@ -1,4 +1,4 @@
-[![](https://godoc.org/github.com/yobert/alsa?status.svg)](https://godoc.org/github.com/yobert/alsa)
+[![](https://godoc.org/github.com/holoplot/go-alsa?status.svg)](https://godoc.org/github.com/holoplot/go-alsa)
 
 Synopsis
 --------
@@ -17,18 +17,18 @@ trying to understand all of the alsa terminology.
 For a simple example of synthesized playback, the beep command will produce
 a sine wave for a few seconds on each detected ALSA output:
 
-    go get github.com/yobert/alsa/cmd/beep
+    go get github.com/holoplot/go-alsa/cmd/beep
     $GOPATH/beep
 
 And for recording from a microphone into a WAV file:
 
-    go get github.com/yobert/alsa/cmd/record
+    go get github.com/holoplot/go-alsa/cmd/record
     $GOPATH/record
 
 This example does recording and playback, but it's got a really
 buggy ring buffer going on:
 
-    go get github.com/yobert/alsa/cmd/echoback
+    go get github.com/holoplot/go-alsa/cmd/echoback
     $GOPATH/echoback
 
 Disclaimer

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/yobert/alsa/pcm"
+	"github.com/holoplot/go-alsa/pcm"
 )
 
 type param uint32
